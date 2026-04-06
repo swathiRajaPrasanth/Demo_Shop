@@ -26,12 +26,10 @@ Ensure Maven is installed and dependencies are downloaded.
 
 🏃 Running Tests
 To run all tests via terminal:
-
-Bash
 mvn clean test
-To run a specific test class:
 
-Bash
+
+To run a specific test class:
 mvn test -Dtest=DemoShopTest
 
 📊 Reporting

@@ -2,20 +2,28 @@ package com.demoshop.tests;
 
 import org.testng.annotations.Test;
 import org.testng.Assert;
+import java.util.List;
 
 import com.demoshop.pages.HomePage;
 import com.demoshop.pages.LoginPage;
 import com.demoshop.pages.ApparelPage;
 import com.demoshop.utils.DecodeUtils;
+import com.demoshop.pages.CartPage;
 
 public class DemoShopTest extends BaseTest {
+
+           
+             
     @Test(priority = 1)
     public void testDemoShop() {
         try {
+
+              HomePage home = new HomePage(driver);
+              LoginPage login = new LoginPage(driver);
+             ApparelPage apparel = new ApparelPage(driver);
+             CartPage cart = new CartPage(driver);
             // 2. Navigate to a URL
-            HomePage home = new HomePage(driver);
-            LoginPage login = new LoginPage(driver);
-            ApparelPage apparel = new ApparelPage(driver);
+            
             String homeTitle = home.getPageTitle();
             Assert.assertEquals(homeTitle, "Demo Web Shop");
             home.clickLogin();
@@ -27,11 +35,12 @@ public class DemoShopTest extends BaseTest {
             home.clickApparelCategory();
             String apparelTitle = apparel.getPageTitle();
             Assert.assertEquals(apparelTitle, "Demo Web Shop. Apparel & Shoes");
-            apparel.selectProducts(3);
+            List<String> addedProducts = apparel.selectProducts(3);
 
             home.clickShoppingCart();
             String cartTitle = home.getPageTitle();
             Assert.assertEquals(cartTitle, "Demo Web Shop. Shopping Cart");
+            cart.verifyCartItems(addedProducts);
             home.clickLogout();
             String logoutTitle = home.getPageTitle();
             Assert.assertEquals(logoutTitle, "Demo Web Shop");
@@ -68,6 +77,7 @@ public class DemoShopTest extends BaseTest {
             home.clickShoppingCart();
             String cartTitle = home.getPageTitle();
             Assert.assertEquals(cartTitle, "Demo Web Shop. Shopping Cart");
+            
         } catch (Exception e) {
             e.printStackTrace();
             Assert.fail("Test failed due to an exception: " + e.getMessage());
