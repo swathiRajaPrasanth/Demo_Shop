@@ -1,5 +1,6 @@
 # Ignore all Maven build output (Reports, Screenshots, Compiled code)
 target/
+screenshots/
 
 # Ignore IDE specific files
 .settings/
