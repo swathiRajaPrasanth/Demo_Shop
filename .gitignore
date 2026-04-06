@@ -1,0 +1,8 @@
+# Ignore all Maven build output (Reports, Screenshots, Compiled code)
+target/
+
+# Ignore IDE specific files
+.settings/
+.classpath
+.project
+.vscode/

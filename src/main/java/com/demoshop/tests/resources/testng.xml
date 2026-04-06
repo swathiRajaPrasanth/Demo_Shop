@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.1.dtd">
+<suite name="TestSuite" parallel="tests" thread-count="2">
+<listeners>
+    <listener class-name="com.demoshop.utils.Listeners"/>
+  </listeners>
+  <test name="ChromeTests">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.demoshop.tests.DemoShopTest"/>
+    </classes>
+  </test>
+  <test name="FirefoxTests">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="com.demoshop.tests.DemoShopTest"/>
+    </classes>
+  </test>
+</suite>
